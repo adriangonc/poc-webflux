@@ -25,4 +25,18 @@ class FluxAndMonoGeneratorServiceTest {
                 .verifyComplete();
 
     }
+
+    @Test
+    void customerMonoTest(){
+        //given
+
+
+        //when
+        var customerMono = fluxAndMonoGeneratorService.customerMono();
+
+        //then
+        StepVerifier.create(customerMono)
+                .expectNext("Adriano")
+                .verifyComplete();
+    }
 }
