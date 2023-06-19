@@ -25,7 +25,7 @@ public class FluxAndMonoGeneratorService {
 
     public Flux<String> fluxOfNames() {
         var customerMap = Map.of("Adriano", 1988, "Sara", 1986, "Maria", 1970);
-        return Flux.fromIterable(customerMap.keySet());
+        return Flux.fromIterable(customerMap.keySet()).log();
     }
 
     public Mono<String> customerMono(){
