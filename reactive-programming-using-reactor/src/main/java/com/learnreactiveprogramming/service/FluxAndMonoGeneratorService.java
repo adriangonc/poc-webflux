@@ -44,4 +44,17 @@ public class FluxAndMonoGeneratorService {
         return List.of("Adriano", "Sara", "Maria");
     }
 
+    public Flux<String> fluxOfCharsFromNames(int nameSize) {
+        return Flux.fromIterable(customerNamesList())
+                .map(name -> name.toUpperCase())
+                .filter( name -> name.length() > nameSize)
+                .flatMap( name -> splitStrings(name))
+                .log();
+    }
+
+    private Flux<String> splitStrings(String name){
+        var nameCharArray = name.split("");
+        return Flux.fromArray(nameCharArray);
+    }
+
 }

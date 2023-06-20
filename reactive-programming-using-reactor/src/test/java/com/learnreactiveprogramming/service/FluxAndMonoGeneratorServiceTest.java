@@ -53,4 +53,19 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNext("ADRIANO-7", "SARA-4", "MARIA-5")
                 .verifyComplete();
     }
+
+
+    @Test
+    void fluxOfCharsFromNames() {
+        //given
+
+
+        //when
+        var charsFromNames = fluxAndMonoGeneratorService.fluxOfCharsFromNames(1);
+
+        //then
+        StepVerifier.create(charsFromNames)
+                .expectNextCount(16)
+                .verifyComplete();
+    }
 }
