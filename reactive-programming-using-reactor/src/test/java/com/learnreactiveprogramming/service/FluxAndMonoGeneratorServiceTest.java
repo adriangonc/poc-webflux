@@ -42,5 +42,15 @@ class FluxAndMonoGeneratorServiceTest {
 
     @Test
     void fluxOfNamesUpperCase() {
+        //given
+
+
+        //when
+        var customerNames = fluxAndMonoGeneratorService.fluxOfNamesUpperCase(3);
+
+        //then
+        StepVerifier.create(customerNames)
+                .expectNext("ADRIANO-7", "SARA-4", "MARIA-5")
+                .verifyComplete();
     }
 }

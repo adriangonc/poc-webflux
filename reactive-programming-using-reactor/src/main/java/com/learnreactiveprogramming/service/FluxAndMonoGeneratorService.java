@@ -28,9 +28,11 @@ public class FluxAndMonoGeneratorService {
         return Flux.fromIterable(customerNamesList()).log();
     }
 
-    public Flux<String> fluxOfNamesUpperCase() {
+    public Flux<String> fluxOfNamesUpperCase(int nameSize) {
         return Flux.fromIterable(customerNamesList())
                 .map(name -> name.toUpperCase())
+                .filter( name -> name.length() > nameSize)
+                .map(name -> name + "-" + name.length())
                 .log();
     }
 
