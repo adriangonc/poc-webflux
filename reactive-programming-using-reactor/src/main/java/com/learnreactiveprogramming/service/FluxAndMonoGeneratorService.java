@@ -3,6 +3,7 @@ package com.learnreactiveprogramming.service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Map;
 
 public class FluxAndMonoGeneratorService {
@@ -24,12 +25,21 @@ public class FluxAndMonoGeneratorService {
     }
 
     public Flux<String> fluxOfNames() {
-        var customerMap = Map.of("Adriano", 1988, "Sara", 1986, "Maria", 1970);
-        return Flux.fromIterable(customerMap.keySet()).log();
+        return Flux.fromIterable(customerNamesList()).log();
+    }
+
+    public Flux<String> fluxOfNamesUpperCase() {
+        return Flux.fromIterable(customerNamesList())
+                .map(name -> name.toUpperCase())
+                .log();
     }
 
     public Mono<String> customerMono(){
         return Mono.just("Adriano");
+    }
+
+    private List<String> customerNamesList(){
+        return List.of("Adriano", "Sara", "Maria");
     }
 
 }

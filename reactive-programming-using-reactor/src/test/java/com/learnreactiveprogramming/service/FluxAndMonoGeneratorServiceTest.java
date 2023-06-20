@@ -39,4 +39,8 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNext("Adriano")
                 .verifyComplete();
     }
+
+    @Test
+    void fluxOfNamesUpperCase() {
+    }
 }
