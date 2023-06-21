@@ -67,6 +67,15 @@ public class FluxAndMonoGeneratorService {
                 .log();
     }
 
+    //A principal diferença entre o ConcatMap e o FlatMap, e que o concat map retorna os resultados ordenados
+    public Flux<String> fluxOfCharsFromNamesConcatMapSync(int nameSize) {
+        return Flux.fromIterable(customerNamesList())
+                .map(name -> name.toUpperCase())
+                .filter( name -> name.length() > nameSize)
+                .concatMap( name -> splitStringsWhithDelay(name))
+                .log();
+    }
+
     private Flux<String> splitStringsWhithDelay(String name){
         var delay = new Random().nextInt(800);
         var nameCharArray = name.split("");

@@ -82,4 +82,19 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNextCount(16)
                 .verifyComplete();
     }
+
+    @Test
+    void fluxOfCharsFromNamesConcatMapSyncTest() {
+        //given
+        int minStringLength = 2;
+
+        //when
+        var charsFromNames = fluxAndMonoGeneratorService.fluxOfCharsFromNamesConcatMapSync(minStringLength);
+
+        //then
+        StepVerifier.create(charsFromNames)
+                .expectNext("A", "D", "R", "I")
+                .expectNextCount(12)
+                .verifyComplete();
+    }
 }
