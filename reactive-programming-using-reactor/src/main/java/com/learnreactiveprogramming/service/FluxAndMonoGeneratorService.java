@@ -5,7 +5,6 @@ import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class FluxAndMonoGeneratorService {
@@ -63,7 +62,7 @@ public class FluxAndMonoGeneratorService {
         return Flux.fromIterable(customerNamesList())
                 .map(name -> name.toUpperCase())
                 .filter( name -> name.length() > nameSize)
-                .flatMap( name -> splitStringsWhithDelay(name))
+                .flatMap( name -> splitStringsWithDelay(name))
                 .log();
     }
 
@@ -72,12 +71,12 @@ public class FluxAndMonoGeneratorService {
         return Flux.fromIterable(customerNamesList())
                 .map(name -> name.toUpperCase())
                 .filter( name -> name.length() > nameSize)
-                .concatMap( name -> splitStringsWhithDelay(name))
+                .concatMap( name -> splitStringsWithDelay(name))
                 .log();
     }
 
-    private Flux<String> splitStringsWhithDelay(String name){
-        var delay = new Random().nextInt(800);
+    private Flux<String> splitStringsWithDelay(String name){
+        var delay = new Random().nextInt(500);
         var nameCharArray = name.split("");
         return Flux.fromArray(nameCharArray).delayElements(Duration.ofMillis(delay));
     }
@@ -88,6 +87,13 @@ public class FluxAndMonoGeneratorService {
                 .map(String::toUpperCase)
                 .filter(str -> str.length() > stringLenght)
                 .flatMap(this::splitStringsMono);
+    }
+
+    public Flux<String> namesMonoFlatMapMany(int stringLenght){
+        return Mono.just("Adriano")
+                .map(String::toUpperCase)
+                .filter(str -> str.length() > stringLenght)
+                .flatMapMany(this::splitStrings); //FlatMapMany funciona somente como Flux sendo possível mapear um Mono para flux
     }
 
     private Mono<List<String>> splitStringsMono(String s) {
