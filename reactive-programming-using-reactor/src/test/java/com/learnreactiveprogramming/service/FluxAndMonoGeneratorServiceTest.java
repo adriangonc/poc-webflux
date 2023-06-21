@@ -68,4 +68,18 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNextCount(16)
                 .verifyComplete();
     }
+
+    @Test
+    void fluxOfCharsFromNamesFlatMapAsyncTest() {
+        //given
+        int minStringLength = 2;
+
+        //when
+        var charsFromNames = fluxAndMonoGeneratorService.fluxOfCharsFromNamesFlatMapAsync(minStringLength);
+
+        //then
+        StepVerifier.create(charsFromNames)
+                .expectNextCount(16)
+                .verifyComplete();
+    }
 }
