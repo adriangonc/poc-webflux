@@ -127,4 +127,18 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNext("A", "D", "R", "I", "A", "N", "O")
                 .verifyComplete();
     }
+
+    @Test
+    void namesFluxTransformTest() {
+        //given
+        int minStringLength = 2;
+
+        //when
+        var listOfStrings = fluxAndMonoGeneratorService.fluxOfNamesTransform(minStringLength);
+
+        //then
+        StepVerifier.create(listOfStrings)
+                .expectNext("ADRIANO", "SARA", "MARIA")
+                .verifyComplete();
+    }
 }
