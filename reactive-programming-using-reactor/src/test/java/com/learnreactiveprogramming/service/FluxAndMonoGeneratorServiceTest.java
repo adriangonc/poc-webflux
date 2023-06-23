@@ -141,4 +141,18 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNext("ADRIANO", "SARA", "MARIA")
                 .verifyComplete();
     }
+
+    @Test
+    void namesFluxTransformDefaultEmptyTest() {
+        //given
+        int minStringLength = 20;
+
+        //when
+        var listOfStrings = fluxAndMonoGeneratorService.fluxOfNamesTransform(minStringLength);
+
+        //then
+        StepVerifier.create(listOfStrings)
+                .expectNext("NOT_FOUND")
+                .verifyComplete();
+    }
 }

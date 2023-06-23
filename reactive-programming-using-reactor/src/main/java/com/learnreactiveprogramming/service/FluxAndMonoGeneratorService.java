@@ -111,6 +111,7 @@ public class FluxAndMonoGeneratorService {
 
         return Flux.fromIterable(customerNamesList())
                 .transform(filterMap)
+                .defaultIfEmpty("NOT_FOUND")
                 .log();
     }
 }
