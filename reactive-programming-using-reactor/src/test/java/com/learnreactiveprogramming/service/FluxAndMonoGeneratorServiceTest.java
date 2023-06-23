@@ -155,4 +155,18 @@ class FluxAndMonoGeneratorServiceTest {
                 .expectNext("NOT_FOUND")
                 .verifyComplete();
     }
+
+    @Test
+    void namesFluxTransformSwitchIfEmptyTest() {
+        //given
+        int minStringLength = 16;
+
+        //when
+        var listOfStrings = fluxAndMonoGeneratorService.fluxOfNamesTransformSwitchIfEmpty(minStringLength);
+
+        //then
+        StepVerifier.create(listOfStrings)
+                .expectNext("D","E","F","A","U","L","T")
+                .verifyComplete();
+    }
 }

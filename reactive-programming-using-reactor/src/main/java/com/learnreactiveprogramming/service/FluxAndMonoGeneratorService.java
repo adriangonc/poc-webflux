@@ -4,6 +4,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
@@ -112,6 +113,25 @@ public class FluxAndMonoGeneratorService {
         return Flux.fromIterable(customerNamesList())
                 .transform(filterMap)
                 .defaultIfEmpty("NOT_FOUND")
+                .log();
+    }
+
+    public Flux<String> fluxOfNamesTransformSwitchIfEmpty(int nameSize) {
+
+        Function<Flux<String>, Flux<String>> filterMap = name ->
+                name.map(String::toUpperCase)
+                .filter( s -> s.length() > nameSize)
+                .flatMap(this::splitStrings);
+
+        Function<Flux<String>, Flux<String>> flatMapWithoutSizeComparator = name ->
+                name.map(String::toUpperCase)
+                        .flatMap(this::splitStrings);
+
+        var defaultFlux = Flux.just("default").transform(flatMapWithoutSizeComparator);
+
+        return Flux.fromIterable(customerNamesList())
+                .transform(filterMap)
+                .switchIfEmpty(defaultFlux)
                 .log();
     }
 }
