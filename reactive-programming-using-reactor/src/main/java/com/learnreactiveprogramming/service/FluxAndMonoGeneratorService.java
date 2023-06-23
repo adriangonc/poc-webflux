@@ -4,7 +4,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
@@ -118,6 +117,7 @@ public class FluxAndMonoGeneratorService {
 
     public Flux<String> fluxOfNamesTransformSwitchIfEmpty(int nameSize) {
 
+        //Interfaces funcionais podem ser passadas como parâmetro
         Function<Flux<String>, Flux<String>> filterMap = name ->
                 name.map(String::toUpperCase)
                 .filter( s -> s.length() > nameSize)
@@ -134,4 +134,7 @@ public class FluxAndMonoGeneratorService {
                 .switchIfEmpty(defaultFlux)
                 .log();
     }
+
+
+
 }
