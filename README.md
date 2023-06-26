@@ -8,3 +8,10 @@ Spring Webflux
 Projeto de estudos do spring webflux.
 
 ## **Arquitetura**
+
+## Stack
+- Java
+- Spring web flux
+- REST
+- Maven
+- Junit
