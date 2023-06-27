@@ -169,5 +169,16 @@ class FluxAndMonoGeneratorServiceTest {
     }
 
 
+    @Test
+    void concatOperatorLettersAndNumbers() {
+        //given
 
+        //when
+        var fluxOfCharsAndNumbers = fluxAndMonoGeneratorService.concatOperatorLettersAndNumbers();
+
+        //then
+        StepVerifier.create(fluxOfCharsAndNumbers)
+                .expectNext("A","B","C","D","1","2","3","4")
+                .verifyComplete();
+    }
 }

@@ -135,6 +135,12 @@ public class FluxAndMonoGeneratorService {
                 .log();
     }
 
+    public Flux<String> concatOperatorLettersAndNumbers(){
+        var letterFlux = Flux.just("A","B","C","D");
 
+        var numberFlux = Flux.just("1","2","3","4");
+
+        return Flux.concat(letterFlux, numberFlux).log();
+    }
 
 }
