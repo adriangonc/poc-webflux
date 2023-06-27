@@ -183,15 +183,15 @@ class FluxAndMonoGeneratorServiceTest {
     }
 
     @Test
-    void concatWithOperatorLettersAndNumbersTest() {
+    void ShouldConcatLetterAndNumberMonoToFluxTest() {
         //given
 
         //when
-        var fluxOfCharsAndNumbers = fluxAndMonoGeneratorService.concatWithOperatorLettersAndNumbers();
+        var fluxOfCharsAndNumbers = fluxAndMonoGeneratorService.concatWithOperatorMonoToFlux();
 
         //then
         StepVerifier.create(fluxOfCharsAndNumbers)
-                .expectNext("A","B","C","1","2","3")
+                .expectNext("A","1")
                 .verifyComplete();
     }
 }

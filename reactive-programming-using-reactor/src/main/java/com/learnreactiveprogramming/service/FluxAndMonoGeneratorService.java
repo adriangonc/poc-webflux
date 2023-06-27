@@ -151,4 +151,12 @@ public class FluxAndMonoGeneratorService {
         return letterFlux.concatWith(numberFlux).log();
     }
 
+    public Flux<String> concatWithOperatorMonoToFlux(){
+        var letterMono = Mono.just("A");
+
+        var numberMono = Mono.just("1");
+
+        return letterMono.concatWith(numberMono).log();
+    }
+
 }
