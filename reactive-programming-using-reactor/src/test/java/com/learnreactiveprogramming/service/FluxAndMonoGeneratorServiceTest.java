@@ -170,7 +170,7 @@ class FluxAndMonoGeneratorServiceTest {
 
 
     @Test
-    void concatOperatorLettersAndNumbers() {
+    void concatOperatorLettersAndNumbersTest() {
         //given
 
         //when
@@ -179,6 +179,19 @@ class FluxAndMonoGeneratorServiceTest {
         //then
         StepVerifier.create(fluxOfCharsAndNumbers)
                 .expectNext("A","B","C","D","1","2","3","4")
+                .verifyComplete();
+    }
+
+    @Test
+    void concatWithOperatorLettersAndNumbersTest() {
+        //given
+
+        //when
+        var fluxOfCharsAndNumbers = fluxAndMonoGeneratorService.concatWithOperatorLettersAndNumbers();
+
+        //then
+        StepVerifier.create(fluxOfCharsAndNumbers)
+                .expectNext("A","B","C","1","2","3")
                 .verifyComplete();
     }
 }
