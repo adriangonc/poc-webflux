@@ -209,4 +209,19 @@ class FluxAndMonoGeneratorServiceTest {
                 .verifyComplete();
 
     }
+
+    @Test
+    void testsWithMergeSequential() {
+
+        //given
+
+        //when
+        var fluxOfCharsAndNumbers = fluxAndMonoGeneratorService.testsWithMergeSequential();
+
+        //then
+        StepVerifier.create(fluxOfCharsAndNumbers)
+                .expectNext("A", "B", "C", "1", "2", "3")
+                .verifyComplete();
+
+    }
 }
