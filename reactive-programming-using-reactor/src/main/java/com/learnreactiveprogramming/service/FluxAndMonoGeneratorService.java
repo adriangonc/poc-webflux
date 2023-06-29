@@ -159,4 +159,16 @@ public class FluxAndMonoGeneratorService {
         return letterMono.concatWith(numberMono).log();
     }
 
+    public Flux<String> testsWithMerge(){
+
+        var letterFlux = Flux.just("A", "B", "C")
+                .delayElements(Duration.ofMillis(50));
+
+        var numberFlux = Flux.just("1", "2", "3")
+                .delayElements(Duration.ofMillis(75));
+
+        return Flux.merge(letterFlux, numberFlux).log();
+
+    }
+
 }
