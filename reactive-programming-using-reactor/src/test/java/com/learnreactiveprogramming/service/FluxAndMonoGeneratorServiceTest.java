@@ -27,7 +27,7 @@ class FluxAndMonoGeneratorServiceTest {
     }
 
     @Test
-    void customerMonoTest(){
+    void customerMonoTest() {
         //given
 
 
@@ -164,7 +164,7 @@ class FluxAndMonoGeneratorServiceTest {
 
         //then
         StepVerifier.create(listOfStrings)
-                .expectNext("D","E","F","A","U","L","T")
+                .expectNext("D", "E", "F", "A", "U", "L", "T")
                 .verifyComplete();
     }
 
@@ -178,7 +178,7 @@ class FluxAndMonoGeneratorServiceTest {
 
         //then
         StepVerifier.create(fluxOfCharsAndNumbers)
-                .expectNext("A","B","C","D","1","2","3","4")
+                .expectNext("A", "B", "C", "D", "1", "2", "3", "4")
                 .verifyComplete();
     }
 
@@ -191,7 +191,7 @@ class FluxAndMonoGeneratorServiceTest {
 
         //then
         StepVerifier.create(fluxOfCharsAndNumbers)
-                .expectNext("A","1")
+                .expectNext("A", "1")
                 .verifyComplete();
     }
 }
