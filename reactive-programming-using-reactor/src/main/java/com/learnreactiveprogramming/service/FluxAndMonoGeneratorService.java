@@ -171,4 +171,27 @@ public class FluxAndMonoGeneratorService {
 
     }
 
+    public Flux<String> testsWithMergeWith(){
+
+        var letterFlux = Flux.just("A", "B", "C")
+                .delayElements(Duration.ofMillis(50));
+
+        var numberFlux = Flux.just("1", "2", "3")
+                .delayElements(Duration.ofMillis(75));
+
+        return letterFlux.mergeWith(numberFlux).log();
+
+    }
+
+    public Flux<String> testsWithMergeWithMono(){
+
+        var letterMono = Mono.just("A");
+
+        var numberMono = Mono.just("1");
+
+        return letterMono.mergeWith(numberMono).log();
+
+    }
+
+
 }
