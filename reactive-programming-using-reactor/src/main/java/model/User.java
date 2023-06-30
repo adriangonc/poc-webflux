@@ -12,6 +12,13 @@ public class User {
 
     private LocalDate birthDate;
 
+    public User(String id, String name, Boolean active, LocalDate birthDate) {
+        this.id = id;
+        this.name = name;
+        this.active = active;
+        this.birthDate = birthDate;
+    }
+
     public String getId() {
         return id;
     }
