@@ -1,14 +1,19 @@
 package com.learnreactiveprogramming.service;
 
+import model.User;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import utils.UserUtils;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
 public class FluxAndMonoGeneratorService {
+
+    UserUtils userUtils = new UserUtils();
 
     public static void main(String[] args) {
         FluxAndMonoGeneratorService fluxAndMonoGeneratorService = new FluxAndMonoGeneratorService();
@@ -202,6 +207,15 @@ public class FluxAndMonoGeneratorService {
                 .delayElements(Duration.ofMillis(75));
 
         return Flux.mergeSequential(letterFlux, numberFlux).log();
+
+    }
+
+    public Flux<User> testsWithfluxUser(){
+        var userFlux = userUtils.createFakeUsers(10);
+
+        return userFlux.filter( f -> f.getActive() == true)
+                .filter(f -> f.getBirthDate().isBefore(LocalDate.now()))
+                .log();
 
     }
 

@@ -224,4 +224,19 @@ class FluxAndMonoGeneratorServiceTest {
                 .verifyComplete();
 
     }
+
+    @Test
+    void testsWithUserFlux() {
+
+        //given
+
+        //when
+        var userFlux = fluxAndMonoGeneratorService.testsWithfluxUser();
+
+        //then
+        StepVerifier.create(userFlux)
+                .expectNextCount(10)
+                .verifyComplete();
+
+    }
 }
