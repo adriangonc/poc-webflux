@@ -220,4 +220,25 @@ public class FluxAndMonoGeneratorService {
 
     }
 
+    public Flux<String> exploreZip() {
+        var letterFlux = Flux.just("A", "B", "C");
+        var numberFlux = Flux.just("1", "2", "3");
+
+        return Flux.zip(letterFlux, numberFlux,
+                        (letter, number) -> letter + number)
+                .log();
+    }
+
+    public Flux<String> exploreZipV2() {
+        var letterFlux = Flux.just("A", "B", "C");
+        var numberFlux = Flux.just("1", "2", "3");
+        var separatorFlux = Flux.just("*", "-", "+");
+
+        return Flux.zip(letterFlux, numberFlux, separatorFlux)
+                .map(tupleCombination -> tupleCombination.getT1()
+                        + tupleCombination.getT2()
+                        + tupleCombination.getT3())
+                .log();
+    }
+
 }
