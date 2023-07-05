@@ -215,6 +215,7 @@ public class FluxAndMonoGeneratorService {
 
         return userFlux.filter(f -> f.getActive() == true)
                 .filter(f -> f.getBirthDate().isBefore(LocalDate.of((LocalDate.now().getYear() - 18), 01, 01)))
+                .filter(f -> f.getName().length() > 3)
                 .log();
 
     }
