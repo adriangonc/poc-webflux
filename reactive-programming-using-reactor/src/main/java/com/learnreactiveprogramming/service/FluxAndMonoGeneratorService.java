@@ -164,7 +164,7 @@ public class FluxAndMonoGeneratorService {
         return letterMono.concatWith(numberMono).log();
     }
 
-    public Flux<String> testsWithMerge(){
+    public Flux<String> testsWithMerge() {
 
         var letterFlux = Flux.just("A", "B", "C")
                 .delayElements(Duration.ofMillis(50));
@@ -176,7 +176,7 @@ public class FluxAndMonoGeneratorService {
 
     }
 
-    public Flux<String> testsWithMergeWith(){
+    public Flux<String> testsWithMergeWith() {
 
         var letterFlux = Flux.just("A", "B", "C")
                 .delayElements(Duration.ofMillis(50));
@@ -188,7 +188,7 @@ public class FluxAndMonoGeneratorService {
 
     }
 
-    public Flux<String> testsWithMergeWithMono(){
+    public Flux<String> testsWithMergeWithMono() {
 
         var letterMono = Mono.just("A");
 
@@ -198,7 +198,7 @@ public class FluxAndMonoGeneratorService {
 
     }
 
-    public Flux<String> testsWithMergeSequential(){
+    public Flux<String> testsWithMergeSequential() {
 
         var letterFlux = Flux.just("A", "B", "C")
                 .delayElements(Duration.ofMillis(50));
@@ -210,11 +210,11 @@ public class FluxAndMonoGeneratorService {
 
     }
 
-    public Flux<User> testsWithfluxUser(){
+    public Flux<User> testsWithfluxUser() {
         var userFlux = userUtils.createFakeUsers(10);
 
-        return userFlux.filter( f -> f.getActive() == true)
-                .filter(f -> f.getBirthDate().isBefore(LocalDate.now()))
+        return userFlux.filter(f -> f.getActive() == true)
+                .filter(f -> f.getBirthDate().isBefore(LocalDate.of((LocalDate.now().getYear() - 18), 01, 01)))
                 .log();
 
     }
