@@ -17,7 +17,7 @@ public class UserUtils {
         int i = 0;
         while (i < quantity) {
             var user = new User("ID00" + Integer.toString(i),
-                    "Adri" + Integer.toString(i),
+                    "Adrian" + Integer.toString(i),
                     true,
                     LocalDate.of(1988, 04, 15));
 

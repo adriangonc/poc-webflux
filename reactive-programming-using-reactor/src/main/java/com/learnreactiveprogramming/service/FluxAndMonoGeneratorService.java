@@ -210,7 +210,7 @@ public class FluxAndMonoGeneratorService {
 
     }
 
-    public Flux<User> testsWithfluxUser() {
+    public Flux<User> testsWithFluxUser() {
         var userFlux = userUtils.createFakeUsers(10);
 
         return userFlux.filter(f -> f.getActive() == true)

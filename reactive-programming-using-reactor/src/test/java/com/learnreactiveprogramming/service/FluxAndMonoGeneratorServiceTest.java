@@ -231,7 +231,7 @@ class FluxAndMonoGeneratorServiceTest {
         //given
 
         //when
-        var userFlux = fluxAndMonoGeneratorService.testsWithfluxUser();
+        var userFlux = fluxAndMonoGeneratorService.testsWithFluxUser();
 
         //then
         StepVerifier.create(userFlux)
