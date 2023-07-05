@@ -241,4 +241,12 @@ public class FluxAndMonoGeneratorService {
                 .log();
     }
 
+    public Flux<String> exploreZipWith() {
+        var letterFlux = Flux.just("A", "B", "C");
+        var numberFlux = Flux.just("1", "2", "3");
+
+        return letterFlux.zipWith(numberFlux, (letter, number) -> letter + number)
+                .log();
+    }
+
 }

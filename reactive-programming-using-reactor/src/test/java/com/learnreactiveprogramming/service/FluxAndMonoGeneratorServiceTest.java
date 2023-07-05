@@ -269,4 +269,19 @@ class FluxAndMonoGeneratorServiceTest {
                 .verifyComplete();
 
     }
+
+    @Test
+    void testsWithZipWith() {
+
+        //given
+
+        //when
+        var value = fluxAndMonoGeneratorService.exploreZipWith();
+
+        //then
+        StepVerifier.create(value)
+                .expectNext("A1", "B2", "C3")
+                .verifyComplete();
+
+    }
 }
