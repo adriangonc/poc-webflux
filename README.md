@@ -12,6 +12,7 @@ Projeto de estudos do spring webflux.
 ## Stack
 - Java
 - Spring web flux
+- Functional programing
 - REST
 - Maven
 - Junit
